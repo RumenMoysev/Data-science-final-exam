@@ -1,27 +1,27 @@
-# Final Exam Project: Air Quality and Weather Analysis
+# Final Exam Project: The Impact of Weather on Delhi's Air Quality
 
 ## Project Topic
-This project investigates the relationship between weather conditions and air quality in a selected city over time.
+This project investigates the critical relationship between meteorological conditions and severe air pollution (PM2.5) in Delhi, India, utilizing time-series machine learning.
 
-## Main Question
-How do weather variables such as temperature, humidity, wind speed, pressure, and precipitation relate to air pollution indicators such as PM2.5, PM10, NO2, or AQI?
+## Main Objective
+To determine how weather variables (temperature, humidity, wind speed) correlate with PM2.5 spikes, and to build a predictive Random Forest Regressor to forecast pollution levels based on historical and meteorological context.
 
 ## Project Type
-This project is structured as a technical report and tutorial hybrid. It combines explanation, mathematical reasoning, Python code, and data analysis in a Jupyter notebook.
+This project is structured as a **Technical Report and Tutorial hybrid**. It combines environmental science explanations, mathematical evaluation metrics, Python code, and predictive data modeling in a Jupyter Notebook.
 
-## Planned Data Sources
-- Air quality dataset from an independent source
-- Weather dataset from a separate independent source
+## Independent Data Sources
+This project successfully merges two disparate datasets:
+1. **Air Quality Data:** Historical daily AQI and PM2.5 readings for Delhi (via CPCB / Kaggle).
+2. **Weather Data:** Hourly historical meteorological records for New Delhi (via Kaggle).
 
-## Planned Workflow
-1. Load both datasets
-2. Clean and validate the data
-3. Align both sources by date
-4. Merge into a single analytical dataset
-5. Perform exploratory data analysis
-6. Apply statistical / mathematical analysis
-7. Interpret findings and discuss limitations
+## Workflow and Methodology
+1. **Data Ingestion & Cleaning:** Loaded independent datasets and handled missing sensor data via linear interpolation.
+2. **Temporal Alignment:** Aggregated hourly weather data into daily averages to match AQI granularity.
+3. **Exploratory Data Analysis (EDA):** Generated correlation heatmaps and dual-axis time-series plots to prove the "Winter Smog" thermal inversion effect.
+4. **Feature Engineering:** Created contextual time-series features (lagged PM2.5, temperature changes, rolling averages).
+5. **Predictive Modeling:** Split data chronologically (to prevent data leakage) and trained a `RandomForestRegressor`.
+6. **Mathematical Evaluation:** Evaluated the model using MAE, RMSE, and $R^2$ to assess accuracy and identify limitations regarding outlier events.
 
 ## Repository Structure
-- `data/` — original datasets
-- `src/` — Jupyter notebook(s) and helper scripts
+- `data/` — Contains the original independent datasets.
+- `src/` — Contains the main Jupyter Notebook (`delhi_air_quality_analysis.ipynb`).
