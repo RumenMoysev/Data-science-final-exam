@@ -15,13 +15,13 @@ This project successfully merges two disparate datasets:
 2. **Weather Data:** Hourly historical meteorological records for New Delhi (via Kaggle).
 
 ## Workflow and Methodology
-1. **Data Ingestion & Cleaning:** Loaded independent datasets and handled missing sensor data via linear interpolation.
-2. **Temporal Alignment:** Aggregated hourly weather data into daily averages to match AQI granularity.
-3. **Exploratory Data Analysis (EDA):** Generated correlation heatmaps and dual-axis time-series plots to prove the "Winter Smog" thermal inversion effect.
-4. **Feature Engineering:** Created contextual time-series features (lagged PM2.5, temperature changes, rolling averages).
-5. **Predictive Modeling:** Split data chronologically (to prevent data leakage) and trained a `RandomForestRegressor`.
-6. **Mathematical Evaluation:** Evaluated the model using MAE, RMSE, and $R^2$ to assess accuracy and identify limitations regarding outlier events.
+1. **Data Ingestion & Cleaning:** Loaded independent datasets, standardized timestamps, forward-filled limited missing weather observations, and dropped rows with missing PM2.5 values.
+2. **Temporal Alignment:** Aggregated hourly weather data into daily averages to match the daily air-quality records.
+3. **Exploratory Data Analysis (EDA):** Generated correlation heatmaps and seasonal plots to examine patterns consistent with winter smog conditions.
+4. **Feature Engineering:** Created contextual time-series features including lagged PM2.5, temperature change, and a rolling PM2.5 average based only on past observations.
+5. **Predictive Modeling:** Split data chronologically to prevent leakage and trained Random Forest models on weather-only and weather-plus-history feature sets.
+6. **Mathematical Evaluation:** Evaluated all models against a persistence baseline using MAE, RMSE, and R².
 
 ## Repository Structure
 - `data/` — Contains the original independent datasets.
-- `src/` — Contains the main Jupyter Notebook (`delhi_air_quality_analysis.ipynb`).
+- `notebooks/` - Contains the main Jupyter Notebook (`delhi_air_quality_analysis.ipynb`).
